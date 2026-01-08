@@ -11,7 +11,7 @@ public class SceneChanger : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // 타이틀 화면에서 게임 시작 버튼을 누르면 게임씬으로 넘어가라.
+    // 타이틀 화면에서 게임 시작 버튼을 누르면 게임 씬으로 넘어가라.
     public void GameStart()
     {
         SceneManager.LoadScene("GameScene");
