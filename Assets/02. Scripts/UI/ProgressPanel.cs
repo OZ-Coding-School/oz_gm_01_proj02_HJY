@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ProgressPanel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Header("패널")]
+    public GameObject progressPanel;     // 진행도 패널
 
-    // Update is called once per frame
-    void Update()
+
+    // 닫기 버튼을 누르면 진행도 패널을 닫아라.
+    public void OffProgress()
     {
-        
+        progressPanel.SetActive(false);
     }
 }
+
