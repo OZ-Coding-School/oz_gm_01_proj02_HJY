@@ -23,7 +23,7 @@ public class OptionPanel : MonoBehaviour
 
 
     // 아이콘 반영
-    void OnEnable()
+    public void OnEnable()
     {
         // 씬이 바뀌거나 패널이 다시 켜질 때 상태 반영
         bgmIcon.sprite = AudioManager.bgmOn ? bgmOnSprite : bgmOffSprite;
@@ -33,14 +33,32 @@ public class OptionPanel : MonoBehaviour
     // 배경 움악
     public void ToggleBGM()
     {
-        AudioManager.Instance.ToggleBGM();
+        // 게임 씬에서 시작할 때 필요한 안전 체크
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ToggleBGM();
+        }
+        else
+        {
+            return;
+        }
+
         bgmIcon.sprite = AudioManager.bgmOn ? bgmOnSprite : bgmOffSprite;
     }
 
     // 효과음
     public void ToggleSFX()
     {
-        AudioManager.Instance.ToggleSFX(playerSources, enemySources);
+        // 게임 씬에서 시작할 때 필요한 안전 체크
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ToggleSFX(playerSources, enemySources);
+        }
+        else
+        {
+            return;
+        }
+
         sfxIcon.sprite = AudioManager.sfxOn ? sfxOnSprite : sfxOffSprite;
     }
 
