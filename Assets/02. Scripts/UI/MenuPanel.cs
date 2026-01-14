@@ -16,17 +16,25 @@ public class MenuPanel : MonoBehaviour
     public Button progressButton; // 진행도 버튼
     public Button optionButton;   // 설정 버튼
 
-    // 게임이 시작되면 메뉴 패널을 꺼라.
+    // 게임이 시작되었다는 알림 받기
     private void OnEnable()
     {
-        PlayerTouchMove.OnGameStart += OffMenu; // 이벤트 구독
+        PlayerTouchMove.OnGameStart += HandleGameStart; // 이벤트 구독
     }
 
     // 패널이 비활성화가 되면 이벤트 해제로 메모리 누수 방지하기
     private void OnDisable()
     {
-        PlayerTouchMove.OnGameStart -= OffMenu; // 이벤트 해제
+        PlayerTouchMove.OnGameStart -= HandleGameStart; // 이벤트 해제
     }
+
+    // 게임이 시작되었다면
+    private void HandleGameStart()
+    {
+        // 메뉴 패널을 끄기
+        OffMenu(); 
+    }
+
 
     // 메뉴 패널을 꺼라.
     private void OffMenu()
